@@ -48,7 +48,7 @@ namespace GoogleARCoreInternal
 
         private void _PreprocessAndroidBuild()
         {
-             //Get the Jdk path
+            // Get the Jdk path.
             var jdkPath = UnityEditor.EditorPrefs.GetString("JdkPath");
             if (string.IsNullOrEmpty(jdkPath))
             {

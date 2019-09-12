@@ -55,7 +55,7 @@ namespace GoogleARCore.Examples.HelloAR
         /// <summary>
         /// A model to place when a raycast from a user touch hits a horizontal plane.
         /// </summary>
-        public GameObject SuvHorizontalPlanePrefab;
+        public GameObject AndyHorizontalPlanePrefab;
 
         /// <summary>
         /// A model to place when a raycast from a user touch hits a feature point.
@@ -135,12 +135,12 @@ namespace GoogleARCore.Examples.HelloAR
                         }
                         else
                         {
-                            prefab = SuvHorizontalPlanePrefab;
+                            prefab = AndyHorizontalPlanePrefab;
                         }
                     }
                     else
                     {
-                        prefab = SuvHorizontalPlanePrefab;
+                        prefab = AndyHorizontalPlanePrefab;
                     }
 
                     // Instantiate Andy model at the hit pose.

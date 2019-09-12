@@ -32,7 +32,7 @@ namespace GoogleARCoreInternal
         {
             var isARCoreRequired = ARCoreProjectSettings.Instance.IsARCoreRequired;
 
-           Debug.LogFormat(
+            Debug.LogFormat(
                 "Building \"{0}\" app. Use 'Edit > Project Settings > ARCore' to adjust " +
                 "ARCore SDK for Unity settings.\n" +
                 "See {1} for more information.",

@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "519483052166",
+    "firebase_url": "https://arimperialblue.firebaseio.com",
+    "project_id": "arimperialblue",
+    "storage_bucket": "arimperialblue.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:519483052166:android:20e52ec9c1595bde194107",
+        "android_client_info": {
+          "package_name": "com.google.ar.core.examples.unity.helloarcom.google.ar.core.examples.unity.helloar"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "519483052166-0c1i6giaot85bgp5ovf59pjc4cklm0uj.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBnabi_-i5Vb0WozPTRNc48ZNSXKz2fANg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "519483052166-0c1i6giaot85bgp5ovf59pjc4cklm0uj.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

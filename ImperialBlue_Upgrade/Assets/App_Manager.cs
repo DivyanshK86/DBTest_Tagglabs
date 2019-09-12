@@ -40,20 +40,20 @@ public class App_Manager : MonoBehaviour {
 
     void Start () {
 
-       // newArCoreSessionPrefab = Instantiate(arCoreSessionPrefab, Vector3.zero, Quaternion.identity);
-       // arcoreSession = newArCoreSessionPrefab.GetComponent<GoogleARCore.ARCoreSession>();
-       // arcoreSession.enabled = false;
+      // // newArCoreSessionPrefab = Instantiate(arCoreSessionPrefab, Vector3.zero, Quaternion.identity);
+      // // arcoreSession = newArCoreSessionPrefab.GetComponent<GoogleARCore.ARCoreSession>();
+      // // arcoreSession.enabled = false;
 
-        dateField.text = System.DateTime.Now.ToString("dd/MM/yy  HH:mm");
+      //  dateField.text = System.DateTime.Now.ToString("dd/MM/yy  HH:mm");
 
-      //  manageData.InsertData(name, phone, category, otpno, city, date, outlet, area);
+      ////  manageData.InsertData(name, phone, category, otpno, city, date, outlet, area);
 
-        parameter.SetActive(true);
-        otp.SetActive(false);
-        dailyEntry.SetActive(false);
-        ar.SetActive(false);
-        towncity.SetActive(false);
-        thankyou.SetActive(false);
+      //  parameter.SetActive(true);
+      //  otp.SetActive(false);
+      //  dailyEntry.SetActive(false);
+      //  ar.SetActive(false);
+      //  towncity.SetActive(false);
+      //  thankyou.SetActive(false);
     }
 
     public void Button_Parameter()
@@ -126,7 +126,7 @@ public class App_Manager : MonoBehaviour {
 
     IEnumerator TakeScreenshot()
     {
-        ar.SetActive(false);
+        //ar.SetActive(false);
         yield return new WaitForEndOfFrame();
 
         image = new Texture2D(Screen.width, Screen.height, TextureFormat.RGB24, false);
