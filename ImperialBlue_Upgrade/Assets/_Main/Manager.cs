@@ -915,7 +915,7 @@ public class Manager : MonoBehaviour
 
     void GotoArScene()
     {
-
+        Application.LoadLevel(1);
     }
 }
 
