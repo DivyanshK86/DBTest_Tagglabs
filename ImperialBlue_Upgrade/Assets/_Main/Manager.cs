@@ -11,9 +11,46 @@ using System.Collections;
 
 public class Manager : MonoBehaviour
 {
+    public UserDataManager dataManager;
+    [Space]
+    public GameObject screen_Register;
+    public GameObject screen_OTP;
+    public GameObject screen_TownCity;
+    public GameObject screen_DailyEntry;
+    [Space]
+    public InputField fullName;
     public InputField mobNo;
+    public Dropdown categories;
+    [Space]
     public InputField verificationOTP;
+    [Space]
+    public InputField townCity;
+    [Space]
+    public InputField date;
+    public InputField shopName;
+    public InputField area;
+    [Space]
     public Text logTxt;
+
+    void ShowScreen(GameObject screen)
+    {
+        screen_Register.SetActive(false);
+        screen_OTP.SetActive(false);
+        screen_TownCity.SetActive(false);
+        screen_DailyEntry.SetActive(false);
+
+        screen.SetActive(true);
+    }
+
+    private void Awake()
+    {
+        dataManager = new UserDataManager();
+
+        if (PlayerPrefs.GetString("verified", "") == "")
+            ShowScreen(screen_Register);
+        else
+            ShowScreen(screen_DailyEntry);
+    }
 
     // Handler for UI buttons on the scene.  Also performs some
     // necessary setup (initializing the firebase app, etc) on
@@ -788,7 +825,7 @@ public class Manager : MonoBehaviour
 
     public void _SendOTP()
     {
-        phoneNumber = mobNo.text;
+        phoneNumber = dataManager.mobileNo;
         VerifyPhoneNumber();
     }
 
@@ -797,12 +834,32 @@ public class Manager : MonoBehaviour
         receivedCode = verificationOTP.text;
         VerifyReceivedPhoneCode();
     }
+    
+    public void _RegisterScreenDone()
+    {
+        if (fullName.text != "" || mobNo.text != "")
+        {
+            dataManager.fullName = fullName.text;
+            dataManager.mobileNo = "+91" + mobNo.text;
+            dataManager.category = categories.options[categories.value].text;
+
+            ShowScreen(screen_OTP);
+            _SendOTP();
+        }
+    }
+
+    public void _OTPscreenDone()
+    {
+        _VerifyOTP();
+    }
 
     void OTPverified(bool state)
     {
-        if(state)
+        if (state)
         {
             logTxt.text = "yay";
+            PlayerPrefs.SetString("verified", dataManager.mobileNo.ToString());
+            ShowScreen(screen_TownCity);
         }
         else
         {
@@ -810,10 +867,51 @@ public class Manager : MonoBehaviour
         }
     }
 
-    public void _DataUploadTest()
+    public void _TownCityDone()
+    {
+        if (townCity.text != "")
+        {
+            dataManager.city = townCity.text;
+            ShowScreen(screen_DailyEntry);
+        }
+    }
+
+    public void _DailyEntryDone()
+    {
+        if(date.text != "" && shopName.text != "" && area.text != "")
+        {
+            dataManager.date = date.text;
+            dataManager.shopName = shopName.text;
+            dataManager.area = area.text;
+
+            UploadData();
+            GotoArScene();
+        }
+    }
+
+    void UploadData()
     {
         DatabaseReference reference = FirebaseDatabase.DefaultInstance.RootReference;
-        reference.Child("users").Child("username").SetValueAsync("divyansh");
+
+        if (dataManager.fullName != null && dataManager.fullName != "")
+            reference.Child(dataManager.mobileNo).Child("fullName").SetValueAsync(dataManager.fullName);
+        if (dataManager.mobileNo != null && dataManager.mobileNo != "")
+            reference.Child(dataManager.mobileNo).Child("mobileNo").SetValueAsync(dataManager.mobileNo);
+        if (dataManager.category != null && dataManager.category != "")
+            reference.Child(dataManager.mobileNo).Child("category").SetValueAsync(dataManager.category);
+
+        if (dataManager.city != null && dataManager.city != "")
+            reference.Child(dataManager.mobileNo).Child("city").SetValueAsync(dataManager.city);
+
+        if (dataManager.shopName != null && dataManager.shopName != "")
+            reference.Child(PlayerPrefs.GetString("verified", "")).Child("date").Child(dataManager.date).Child("shopName").SetValueAsync(dataManager.shopName);
+        if (dataManager.shopName != null && dataManager.shopName != "")
+            reference.Child(PlayerPrefs.GetString("verified", "")).Child("date").Child(dataManager.date).Child("area").SetValueAsync(dataManager.area);
+    }
+
+    void GotoArScene()
+    {
+
     }
 }
 
