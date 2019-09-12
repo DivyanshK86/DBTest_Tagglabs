@@ -1,0 +1,23 @@
+fileFormatVersion: 2
+guid: d6d6e0208375fe34884250dbfab9ad4a
+TrueTypeFontImporter:
+  externalObjects: {}
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontName: Zurich BT
+  fontNames:
+  - Zurich BT
+  fallbackFontReferences:
+  - {fileID: 12800000, guid: 4b3fa74dcdd44c14a860aeaad525816d, type: 3}
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  useLegacyBoundsCalculation: 0
+  shouldRoundAdvanceValue: 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
