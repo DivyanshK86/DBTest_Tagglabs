@@ -46,6 +46,10 @@ public class Manager : MonoBehaviour
     {
         dataManager = new UserDataManager();
 
+        //Debug.Log(DateTime.Now.ToString("HH:mm:ss"));
+
+        date.text = DateTime.Now.ToString("dd-MMMM-yyyy");
+
         if (PlayerPrefs.GetString("verified", "") == "")
             ShowScreen(screen_Register);
         else
@@ -904,9 +908,9 @@ public class Manager : MonoBehaviour
             reference.Child(dataManager.mobileNo).Child("city").SetValueAsync(dataManager.city);
 
         if (dataManager.shopName != null && dataManager.shopName != "")
-            reference.Child(PlayerPrefs.GetString("verified", "")).Child("date").Child(dataManager.date).Child("shopName").SetValueAsync(dataManager.shopName);
+            reference.Child(PlayerPrefs.GetString("verified", "")).Child("date").Child(dataManager.date + " " + DateTime.Now.ToString("HH:mm:ss")).Child("shopName").SetValueAsync(dataManager.shopName);
         if (dataManager.shopName != null && dataManager.shopName != "")
-            reference.Child(PlayerPrefs.GetString("verified", "")).Child("date").Child(dataManager.date).Child("area").SetValueAsync(dataManager.area);
+            reference.Child(PlayerPrefs.GetString("verified", "")).Child("date").Child(dataManager.date + " " + DateTime.Now.ToString("HH:mm:ss")).Child("area").SetValueAsync(dataManager.area);
     }
 
     void GotoArScene()
