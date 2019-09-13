@@ -126,14 +126,14 @@ public class App_Manager : MonoBehaviour {
 
     IEnumerator TakeScreenshot()
     {
-        //ar.SetActive(false);
+        ar.SetActive(false);
         yield return new WaitForEndOfFrame();
 
         image = new Texture2D(Screen.width, Screen.height, TextureFormat.RGB24, false);
         image.ReadPixels(new Rect(0, 0, Screen.width, Screen.height), 0, 0);
         image.Apply();
 
-       
+
         //then Save To Disk as PNG
         byte[] bytes = image.EncodeToPNG();
         var dirPath = Application.persistentDataPath + "/";
@@ -143,11 +143,40 @@ public class App_Manager : MonoBehaviour {
         }
         string fileName = "AR_" + DateTime.Now.ToString().Replace("/", "-") + ".png";
 
-        File.WriteAllBytes(dirPath + fileName , bytes);
+        File.WriteAllBytes(dirPath + fileName, bytes);
         NativeGallery.SaveImageToGallery(image, "AR_", DateTime.Now.ToString().Replace("/", "-"));
+            Debug.Log(dirPath + fileName);
 
-        thankyou.SetActive(true);
+
+        yield return new WaitForSeconds(1f);
+
+        if (!Application.isEditor)
+        {
+            //Create intent for action send
+            AndroidJavaClass intentClass = new AndroidJavaClass("android.content.Intent");
+            AndroidJavaObject intentObject = new AndroidJavaObject("android.content.Intent");
+            intentObject.Call<AndroidJavaObject>("setAction", intentClass.GetStatic<string>("ACTION_SEND"));
+
+            //create image URI to add it to the intent
+            AndroidJavaClass uriClass = new AndroidJavaClass("android.net.Uri");
+            AndroidJavaObject uriObject = uriClass.CallStatic<AndroidJavaObject>("parse", "file://" + dirPath + fileName);
+
+            //put image and string extra
+            intentObject.Call<AndroidJavaObject>("putExtra", intentClass.GetStatic<string>("EXTRA_STREAM"), uriObject);
+            intentObject.Call<AndroidJavaObject>("setType", "image/png");
+            //intentObject.Call<AndroidJavaObject>("putExtra", intentClass.GetStatic<string>("EXTRA_SUBJECT"), shareSubject);
+            //intentObject.Call<AndroidJavaObject>("putExtra", intentClass.GetStatic<string>("EXTRA_TEXT"), shareMessage);
+
+            AndroidJavaClass unity = new AndroidJavaClass("com.unity3d.player.UnityPlayer");
+            AndroidJavaObject currentActivity = unity.GetStatic<AndroidJavaObject>("currentActivity");
+            AndroidJavaObject chooser = intentClass.CallStatic<AndroidJavaObject>("createChooser", intentObject, "Share your high score");
+            currentActivity.Call("startActivity", chooser);
+        }
+
+        ar.SetActive(true);
+        //thankyou.SetActive(true);
     }
+
 
     public void Btn_Restart()
     {

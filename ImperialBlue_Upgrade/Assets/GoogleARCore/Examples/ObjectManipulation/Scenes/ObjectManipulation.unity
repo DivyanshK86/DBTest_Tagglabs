@@ -338,6 +338,7 @@ GameObject:
   - component: {fileID: 1233457659}
   - component: {fileID: 1233457658}
   - component: {fileID: 1233457657}
+  - component: {fileID: 1233457660}
   m_Layer: 0
   m_Name: EventSystem
   m_TagString: Untagged
@@ -393,6 +394,22 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1233457660
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1233457656}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 89f64c23d1c8ef643b61d91b5ce2422e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  subject: asd
+  ShareMessage: assa
+  url: sad
+  ScreenshotName: DenysScreenshot.png
 --- !u!1 &1458633269 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1026997606374626, guid: c539aa4fa1bac4b4da61761b0699b48b,
@@ -415,7 +432,7 @@ MonoBehaviour:
   otp: {fileID: 0}
   towncity: {fileID: 0}
   dailyEntry: {fileID: 0}
-  ar: {fileID: 0}
+  ar: {fileID: 1614553082}
   thankyou: {fileID: 0}
   nameField: {fileID: 0}
   phoneField: {fileID: 0}
