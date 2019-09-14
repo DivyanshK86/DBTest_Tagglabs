@@ -8,6 +8,8 @@ using NativeGalleryNamespace;
 
 public static class NativeGallery
 {
+    public static string savedpath;
+
 	public struct ImageProperties
 	{
 		public readonly int width;
@@ -303,6 +305,8 @@ public static class NativeGallery
 				throw new ArgumentException( "Parameter 'filenameFormatted' is null or empty!" );
 
 			string path = GetSavePath( album, filenameFormatted );
+
+            savedpath = path;
 
 			File.WriteAllBytes( path, mediaBytes );
 

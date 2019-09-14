@@ -150,28 +150,32 @@ public class App_Manager : MonoBehaviour {
 
         yield return new WaitForSeconds(1f);
 
-        if (!Application.isEditor)
-        {
-            //Create intent for action send
-            AndroidJavaClass intentClass = new AndroidJavaClass("android.content.Intent");
-            AndroidJavaObject intentObject = new AndroidJavaObject("android.content.Intent");
-            intentObject.Call<AndroidJavaObject>("setAction", intentClass.GetStatic<string>("ACTION_SEND"));
+        //NativeShare nativeShare = new NativeShare();
+        //nativeShare.AddFile(NativeGallery.savedpath);
+        //nativeShare.Share();
 
-            //create image URI to add it to the intent
-            AndroidJavaClass uriClass = new AndroidJavaClass("android.net.Uri");
-            AndroidJavaObject uriObject = uriClass.CallStatic<AndroidJavaObject>("parse", "file://" + dirPath + fileName);
+        //if (!Application.isEditor)
+        //{
+        //    //Create intent for action send
+        //    AndroidJavaClass intentClass = new AndroidJavaClass("android.content.Intent");
+        //    AndroidJavaObject intentObject = new AndroidJavaObject("android.content.Intent");
+        //    intentObject.Call<AndroidJavaObject>("setAction", intentClass.GetStatic<string>("ACTION_SEND"));
 
-            //put image and string extra
-            intentObject.Call<AndroidJavaObject>("putExtra", intentClass.GetStatic<string>("EXTRA_STREAM"), uriObject);
-            intentObject.Call<AndroidJavaObject>("setType", "image/png");
-            //intentObject.Call<AndroidJavaObject>("putExtra", intentClass.GetStatic<string>("EXTRA_SUBJECT"), shareSubject);
-            //intentObject.Call<AndroidJavaObject>("putExtra", intentClass.GetStatic<string>("EXTRA_TEXT"), shareMessage);
+        //    //create image URI to add it to the intent
+        //    AndroidJavaClass uriClass = new AndroidJavaClass("android.net.Uri");
+        //    AndroidJavaObject uriObject = uriClass.CallStatic<AndroidJavaObject>("parse", "file://" + dirPath + fileName);
 
-            AndroidJavaClass unity = new AndroidJavaClass("com.unity3d.player.UnityPlayer");
-            AndroidJavaObject currentActivity = unity.GetStatic<AndroidJavaObject>("currentActivity");
-            AndroidJavaObject chooser = intentClass.CallStatic<AndroidJavaObject>("createChooser", intentObject, "Share your high score");
-            currentActivity.Call("startActivity", chooser);
-        }
+        //    //put image and string extra
+        //    intentObject.Call<AndroidJavaObject>("putExtra", intentClass.GetStatic<string>("EXTRA_STREAM"), uriObject);
+        //    intentObject.Call<AndroidJavaObject>("setType", "image/png");
+        //    //intentObject.Call<AndroidJavaObject>("putExtra", intentClass.GetStatic<string>("EXTRA_SUBJECT"), shareSubject);
+        //    //intentObject.Call<AndroidJavaObject>("putExtra", intentClass.GetStatic<string>("EXTRA_TEXT"), shareMessage);
+
+        //    AndroidJavaClass unity = new AndroidJavaClass("com.unity3d.player.UnityPlayer");
+        //    AndroidJavaObject currentActivity = unity.GetStatic<AndroidJavaObject>("currentActivity");
+        //    AndroidJavaObject chooser = intentClass.CallStatic<AndroidJavaObject>("createChooser", intentObject, "Share your high score");
+        //    currentActivity.Call("startActivity", chooser);
+        //}
 
         ar.SetActive(true);
         //thankyou.SetActive(true);

@@ -73,7 +73,7 @@ namespace GoogleARCore.Examples.Common
                  return;
             }
 
-            m_MeshRenderer.enabled = true;
+            // m_MeshRenderer.enabled = true;
 
             _UpdateMeshIfNeeded();
         }
@@ -87,6 +87,7 @@ namespace GoogleARCore.Examples.Common
             m_DetectedPlane = plane;
             m_MeshRenderer.material.SetColor("_GridColor", Color.white);
             m_MeshRenderer.material.SetFloat("_UvRotation", Random.Range(0.0f, 360.0f));
+            m_MeshRenderer.enabled = false;
 
             Update();
         }

@@ -5636,7 +5636,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: MobileNumber
+  m_Text: Mobile Number
 --- !u!222 &1521141755
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -8424,7 +8424,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: DAILY ENTRTY
+  m_Text: DAILY ENTRY
 --- !u!222 &2126055571
 CanvasRenderer:
   m_ObjectHideFlags: 0
