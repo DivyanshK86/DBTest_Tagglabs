@@ -152,39 +152,39 @@ namespace GoogleARCore.Examples.ObjectManipulation
         /// <param name="gesture">The current gesture.</param>
         protected override void OnEndManipulation(DragGesture gesture)
         {
-            GameObject oldAnchor = transform.parent.gameObject;
+            //GameObject oldAnchor = transform.parent.gameObject;
 
-            Pose desiredPose = new Pose(m_DesiredAnchorPosition, m_LastHit.Pose.rotation);
+            //Pose desiredPose = new Pose(m_DesiredAnchorPosition, m_LastHit.Pose.rotation);
 
-            Vector3 desiredLocalPosition =
-                transform.parent.InverseTransformPoint(desiredPose.position);
+            //Vector3 desiredLocalPosition =
+            //    transform.parent.InverseTransformPoint(desiredPose.position);
 
-            if (desiredLocalPosition.magnitude > MaxTranslationDistance)
-            {
-                desiredLocalPosition = desiredLocalPosition.normalized * MaxTranslationDistance;
-            }
+            //if (desiredLocalPosition.magnitude > MaxTranslationDistance)
+            //{
+            //    desiredLocalPosition = desiredLocalPosition.normalized * MaxTranslationDistance;
+            //}
 
-            desiredPose.position = transform.parent.TransformPoint(desiredLocalPosition);
+            //desiredPose.position = transform.parent.TransformPoint(desiredLocalPosition);
 
-            Anchor newAnchor = m_LastHit.Trackable.CreateAnchor(desiredPose);
-            transform.parent = newAnchor.transform;
+            //Anchor newAnchor = m_LastHit.Trackable.CreateAnchor(desiredPose);
+            //transform.parent = newAnchor.transform;
 
-            Destroy(oldAnchor);
+            //Destroy(oldAnchor);
 
-            m_DesiredLocalPosition = Vector3.zero;
+            //m_DesiredLocalPosition = Vector3.zero;
 
-            // Rotate if the plane direction has changed.
-            if (((desiredPose.rotation * Vector3.up) - transform.up).magnitude > k_DiffThreshold)
-            {
-                m_DesiredRotation = desiredPose.rotation;
-            }
-            else
-            {
-                m_DesiredRotation = transform.rotation;
-            }
+            //// Rotate if the plane direction has changed.
+            //if (((desiredPose.rotation * Vector3.up) - transform.up).magnitude > k_DiffThreshold)
+            //{
+            //    m_DesiredRotation = desiredPose.rotation;
+            //}
+            //else
+            //{
+            //    m_DesiredRotation = transform.rotation;
+            //}
 
-            // Make sure position is updated one last time.
-            m_IsActive = true;
+            //// Make sure position is updated one last time.
+            //m_IsActive = true;
         }
 
         private void UpdatePosition()

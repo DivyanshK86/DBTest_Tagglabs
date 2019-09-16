@@ -65,11 +65,16 @@ namespace GoogleARCore.Examples.ObjectManipulation
         /// </summary>
         protected override void Update()
         {
+
             base.Update();
-            if (transform.hasChanged)
+
+            if (!AndyPlacementManipulator.objectCreated)
             {
-                float height = -m_ScaledElevation / transform.localScale.y;
-                SelectionVisualization.transform.localPosition = new Vector3(0, height, 0);
+                if (transform.hasChanged)
+                {
+                    float height = -m_ScaledElevation / transform.localScale.y;
+                    SelectionVisualization.transform.localPosition = new Vector3(0, height, 0);
+                }
             }
         }
 
@@ -121,7 +126,7 @@ namespace GoogleARCore.Examples.ObjectManipulation
         /// </summary>
         protected override void OnSelected()
         {
-            SelectionVisualization.SetActive(true);
+            //SelectionVisualization.SetActive(true);
         }
 
         /// <summary>
@@ -129,7 +134,7 @@ namespace GoogleARCore.Examples.ObjectManipulation
         /// </summary>
         protected override void OnDeselected()
         {
-            SelectionVisualization.SetActive(false);
+            //SelectionVisualization.SetActive(false);
         }
     }
 }

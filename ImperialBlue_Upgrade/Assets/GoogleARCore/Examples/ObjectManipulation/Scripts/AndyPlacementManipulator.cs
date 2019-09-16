@@ -51,6 +51,9 @@ namespace GoogleARCore.Examples.ObjectManipulation
         /// <returns>True if the manipulation can be started.</returns>
         /// 
         bool isAndyCreated = false;
+
+        public static bool objectCreated;
+
         GameObject andy;
 
         private void Start()
@@ -104,10 +107,11 @@ namespace GoogleARCore.Examples.ObjectManipulation
                     if (isAndyCreated == false)
                     {
                         isAndyCreated = true;
+                        objectCreated = true;
                         // Instantiate Andy model at the hit pose.
                         var andyObject = Instantiate(AndyPrefab, hit.Pose.position, hit.Pose.rotation);
                         andy = andyObject;
-                        // Instantiate manipulator.
+                        // Instantiate manipulator.     -- okay
                         var manipulator =
                             Instantiate(ManipulatorPrefab, hit.Pose.position, hit.Pose.rotation);
 
@@ -127,21 +131,24 @@ namespace GoogleARCore.Examples.ObjectManipulation
                     else
                     {
                         // Instantiate manipulator.
-                        var manipulator =
-                            Instantiate(ManipulatorPrefab, hit.Pose.position, hit.Pose.rotation);
+                        if (!objectCreated)
+                        {
+                            var manipulator =
+                                Instantiate(ManipulatorPrefab, hit.Pose.position, hit.Pose.rotation);
 
-                        // Make Andy model a child of the manipulator.
-                        andy.transform.parent = manipulator.transform;
+                            // Make Andy model a child of the manipulator.
+                            andy.transform.parent = manipulator.transform;
 
-                        // Create an anchor to allow ARCore to track the hitpoint as understanding of
-                        // the physical world evolves.
-                        var anchor = hit.Trackable.CreateAnchor(hit.Pose);
+                            // Create an anchor to allow ARCore to track the hitpoint as understanding of
+                            // the physical world evolves.
+                            var anchor = hit.Trackable.CreateAnchor(hit.Pose);
 
-                        // Make manipulator a child of the anchor.
-                        manipulator.transform.parent = anchor.transform;
+                            // Make manipulator a child of the anchor.
+                            manipulator.transform.parent = anchor.transform;
 
-                        // Select the placed object.
-                        manipulator.GetComponent<Manipulator>().Select();
+                            // Select the placed object.
+                            manipulator.GetComponent<Manipulator>().Select();
+                        }
                     }
                 }
             }

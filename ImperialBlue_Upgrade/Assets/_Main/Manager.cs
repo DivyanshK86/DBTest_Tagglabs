@@ -166,6 +166,8 @@ public class Manager : MonoBehaviour
         {
             Application.Quit();
         }
+
+        Screen.orientation = ScreenOrientation.Portrait;
     }
 
     void OnDestroy()

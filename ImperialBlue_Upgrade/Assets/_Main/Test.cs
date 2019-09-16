@@ -3,6 +3,7 @@ using System.Collections;
 using System.Runtime.InteropServices;
 using System.IO;
 using System;
+using GoogleARCore.Examples.Common;
 
 /*
  * https://github.com/ChrisMaire/unity-native-sharing
@@ -15,6 +16,11 @@ public class Test : MonoBehaviour {
 
     public GameObject SaveAndCancelButtons;
     public GameObject ShareAndCancelButtons;
+    [Space]
+    public GameObject portraiFrame;
+    public GameObject landscapeFrame;
+
+    public PointcloudVisualizer pointcloudVisualizer;
 
     string screenShotPath;
     string msgTxt;
@@ -23,8 +29,15 @@ public class Test : MonoBehaviour {
     {
         SaveAndCancelButtons.SetActive(false);
         ShareAndCancelButtons.SetActive(false);
+
+        portraiFrame.SetActive(false);
+        landscapeFrame.SetActive(false);
+
+        pointcloudVisualizer.enabled = true;
+
+        Screen.orientation = ScreenOrientation.AutoRotation;
     }
-    
+
     public void ShareScreenshotWithText(string text)
     {
         StartCoroutine(TurnOffTheButton(text));
@@ -33,6 +46,18 @@ public class Test : MonoBehaviour {
     IEnumerator TurnOffTheButton(String text)
     {
         cameraButton.SetActive(false);
+        pointcloudVisualizer.enabled = false;
+
+
+        if (Screen.orientation == ScreenOrientation.Portrait || Screen.orientation == ScreenOrientation.PortraitUpsideDown)
+        {
+            portraiFrame.SetActive(true);
+        }
+        else
+        {
+            landscapeFrame.SetActive(true);
+        }
+
         yield return new WaitForSeconds(0.1f);
 
         ScreenshotName = UnityEngine.Random.Range(10000, 99999).ToString() + ".png";
@@ -58,6 +83,9 @@ public class Test : MonoBehaviour {
 
         yield return new WaitForSeconds(0.1f);
 
+        portraiFrame.SetActive(false);
+        landscapeFrame.SetActive(false);
+
         ShowSaveAndCanceOption();
     }
 
@@ -79,6 +107,11 @@ public class Test : MonoBehaviour {
     {
         SaveAndCancelButtons.SetActive(false);
         cameraButton.SetActive(true);
+
+        portraiFrame.SetActive(false);
+        landscapeFrame.SetActive(false);
+        pointcloudVisualizer.enabled = true;
+
     }
 
     void ShowShareAndCancelOption()
@@ -96,6 +129,11 @@ public class Test : MonoBehaviour {
     {
         ShareAndCancelButtons.SetActive(false);
         cameraButton.SetActive(true);
+
+        portraiFrame.SetActive(false);
+        landscapeFrame.SetActive(false);
+        pointcloudVisualizer.enabled = true;
+
     }
 
     //CaptureScreenshot runs asynchronously, so you'll need to either capture the screenshot early and wait a fixed time
@@ -109,6 +147,10 @@ public class Test : MonoBehaviour {
 		NativeShare.Share(text, screenShotPath, "", "", "image/png", true, "");
         yield return new WaitForSeconds(0.1f);
         cameraButton.SetActive(true);
+
+        portraiFrame.SetActive(false);
+        landscapeFrame.SetActive(false);
+        pointcloudVisualizer.enabled = true;
     }
 
     //---------- Helper Variables ----------//
