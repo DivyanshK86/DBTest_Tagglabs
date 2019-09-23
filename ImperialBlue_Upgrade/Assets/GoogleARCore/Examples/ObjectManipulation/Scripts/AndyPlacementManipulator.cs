@@ -105,7 +105,7 @@ namespace GoogleARCore.Examples.ObjectManipulation
             TrackableHitFlags raycastFilter = TrackableHitFlags.PlaneWithinPolygon;
 
             if (Frame.Raycast(
-                Screen.width/2f,(Screen.height * (2/3f)), raycastFilter, out hit))
+                Screen.width / 2f, (Screen.height * /*PlayerPrefs.GetFloat("screenYpos",*/ (2 / 3f)/*)*/), raycastFilter, out hit))
             {
                 // Use hit pose and camera pose to check if hittest is from the
                 // back of the plane, if it is, no need to create the anchor.
@@ -122,8 +122,28 @@ namespace GoogleARCore.Examples.ObjectManipulation
                         isAndyCreated = true;
                         objectCreated = true;
                         // Instantiate Andy model at the hit pose.
+
                         var andyObject = Instantiate(AndyPrefab, hit.Pose.position, hit.Pose.rotation);
                         andy = andyObject;
+
+                        andy.transform.GetChild(0).localScale = Vector3.one * PlayerPrefs.GetFloat("carScale", 1.5f);
+
+                        switch(ModeSelection.currentMode)
+                        {
+                            case 1:
+                                andy.transform.GetChild(0).rotation = Quaternion.Euler(Vector3.up * PlayerPrefs.GetFloat("view1", -90f)); 
+                                break;
+                            case 2:
+                                andy.transform.GetChild(0).rotation = Quaternion.Euler(Vector3.up * PlayerPrefs.GetFloat("view2", -130f));
+                                break;
+                            case 3:
+                                andy.transform.GetChild(0).rotation = Quaternion.Euler(Vector3.up * PlayerPrefs.GetFloat("view3", -40f));
+                                break;
+                            case 4:
+                                andy.transform.GetChild(0).rotation = Quaternion.Euler(Vector3.up * PlayerPrefs.GetFloat("view4", 0f));
+                                break;
+                        }
+
                         // Instantiate manipulator.     -- okay
                         var manipulator =
                             Instantiate(ManipulatorPrefab, hit.Pose.position, hit.Pose.rotation);

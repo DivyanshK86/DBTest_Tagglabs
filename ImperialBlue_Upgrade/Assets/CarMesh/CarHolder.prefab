@@ -69,11 +69,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 9113182928546115851}
     m_Modifications:
-    - target: {fileID: 3117989427026966782, guid: 339c3743b186a2445bfe62b9b6a6b89f,
-        type: 3}
-      propertyPath: m_Name
-      value: Car_prefab_updated
-      objectReference: {fileID: 0}
     - target: {fileID: 3117989427026732254, guid: 339c3743b186a2445bfe62b9b6a6b89f,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -143,6 +138,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalScale.z
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3117989427026966782, guid: 339c3743b186a2445bfe62b9b6a6b89f,
+        type: 3}
+      propertyPath: m_Name
+      value: Car_prefab_updated
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 339c3743b186a2445bfe62b9b6a6b89f, type: 3}

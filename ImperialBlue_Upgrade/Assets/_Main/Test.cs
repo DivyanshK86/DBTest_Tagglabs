@@ -274,7 +274,7 @@ public class Test : MonoBehaviour {
     public void _ResetButton()
     {
         GoogleARCore.Examples.ObjectManipulation.AndyPlacementManipulator.objectCreated = false;
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        SceneManager.LoadScene(1);
     }
 
     public void _ToggleCameraMode()
