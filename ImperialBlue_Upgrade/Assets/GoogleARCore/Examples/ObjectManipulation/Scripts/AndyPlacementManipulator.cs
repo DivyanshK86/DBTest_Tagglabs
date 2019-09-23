@@ -21,6 +21,7 @@
 namespace GoogleARCore.Examples.ObjectManipulation
 {
     using GoogleARCore;
+    using System.Collections;
     using UnityEngine;
 
     /// <summary>
@@ -58,7 +59,7 @@ namespace GoogleARCore.Examples.ObjectManipulation
 
         private void Start()
         {
-
+            StartCoroutine(TrySpawnCar());
         }
         protected override bool CanStartManipulationForGesture(TapGesture gesture)
         {
@@ -74,25 +75,37 @@ namespace GoogleARCore.Examples.ObjectManipulation
         /// Function called when the manipulation is ended.
         /// </summary>
         /// <param name="gesture">The current gesture.</param>
-        protected override void OnEndManipulation(TapGesture gesture)
-        {
-            if (gesture.WasCancelled)
-            {
-                return;
-            }
+        /// 
 
-            // If gesture is targeting an existing object we are done.
-            if (gesture.TargetObject != null)
-            {
-                return;
-            }
+        IEnumerator TrySpawnCar()
+        {
+            yield return new WaitForSeconds(1);
+
+            if (objectCreated != true)
+                RaycastInTheMiddle();
+
+            StartCoroutine(TrySpawnCar());
+        }
+
+        void RaycastInTheMiddle()
+        {
+            //if (gesture.WasCancelled)
+            //{
+            //    return;
+            //}
+
+            //// If gesture is targeting an existing object we are done.
+            //if (gesture.TargetObject != null)
+            //{
+            //    return;
+            //}
 
             // Raycast against the location the player touched to search for planes.
             TrackableHit hit;
             TrackableHitFlags raycastFilter = TrackableHitFlags.PlaneWithinPolygon;
 
             if (Frame.Raycast(
-                gesture.StartPosition.x, gesture.StartPosition.y, raycastFilter, out hit))
+                Screen.width/2f,(Screen.height * (2/3f)), raycastFilter, out hit))
             {
                 // Use hit pose and camera pose to check if hittest is from the
                 // back of the plane, if it is, no need to create the anchor.
@@ -153,5 +166,89 @@ namespace GoogleARCore.Examples.ObjectManipulation
                 }
             }
         }
+
+        //protected override void OnEndManipulation(TapGesture gesture)
+        //{
+        //    if (gesture.WasCancelled)
+        //    {
+        //        return;
+        //    }
+
+        //    // If gesture is targeting an existing object we are done.
+        //    if (gesture.TargetObject != null)
+        //    {
+        //        return;
+        //    }
+
+        //    // Raycast against the location the player touched to search for planes.
+        //    TrackableHit hit;
+        //    TrackableHitFlags raycastFilter = TrackableHitFlags.PlaneWithinPolygon;
+
+        //    if (Frame.Raycast(
+        //        gesture.StartPosition.x, gesture.StartPosition.y, raycastFilter, out hit))
+        //    {
+        //        // Use hit pose and camera pose to check if hittest is from the
+        //        // back of the plane, if it is, no need to create the anchor.
+        //        if ((hit.Trackable is DetectedPlane) &&
+        //            Vector3.Dot(FirstPersonCamera.transform.position - hit.Pose.position,
+        //                hit.Pose.rotation * Vector3.up) < 0)
+        //        {
+        //            Debug.Log("Hit at back of the current DetectedPlane");
+        //        }
+        //        else
+        //        {
+        //            if (isAndyCreated == false)
+        //            {
+        //                isAndyCreated = true;
+        //                objectCreated = true;
+        //                // Instantiate Andy model at the hit pose.
+        //                var andyObject = Instantiate(AndyPrefab, hit.Pose.position, hit.Pose.rotation);
+        //                andy = andyObject;
+        //                // Instantiate manipulator.     -- okay
+        //                var manipulator =
+        //                    Instantiate(ManipulatorPrefab, hit.Pose.position, hit.Pose.rotation);
+
+        //                // Make Andy model a child of the manipulator.
+        //                andyObject.transform.parent = manipulator.transform;
+
+        //                // Create an anchor to allow ARCore to track the hitpoint as understanding of
+        //                // the physical world evolves.
+        //                var anchor = hit.Trackable.CreateAnchor(hit.Pose);
+
+        //                // Make manipulator a child of the anchor.
+        //                manipulator.transform.parent = anchor.transform;
+
+        //                // Select the placed object.
+        //                manipulator.GetComponent<Manipulator>().Select();
+        //            }
+        //            else
+        //            {
+        //                // Instantiate manipulator.
+        //                if (!objectCreated)
+        //                {
+        //                    var manipulator =
+        //                        Instantiate(ManipulatorPrefab, hit.Pose.position, hit.Pose.rotation);
+
+        //                    // Make Andy model a child of the manipulator.
+        //                    andy.transform.parent = manipulator.transform;
+
+        //                    // Create an anchor to allow ARCore to track the hitpoint as understanding of
+        //                    // the physical world evolves.
+        //                    var anchor = hit.Trackable.CreateAnchor(hit.Pose);
+
+        //                    // Make manipulator a child of the anchor.
+        //                    manipulator.transform.parent = anchor.transform;
+
+        //                    // Select the placed object.
+        //                    manipulator.GetComponent<Manipulator>().Select();
+        //                }
+        //            }
+        //        }
+        //    }
+        //}
+
+
+
+
     }
 }

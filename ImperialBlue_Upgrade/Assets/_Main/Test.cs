@@ -4,6 +4,9 @@ using System.Runtime.InteropServices;
 using System.IO;
 using System;
 using GoogleARCore.Examples.Common;
+using UnityEngine.SceneManagement;
+using UnityEngine.UI;
+using GoogleARCore;
 
 /*
  * https://github.com/ChrisMaire/unity-native-sharing
@@ -22,6 +25,10 @@ public class Test : MonoBehaviour {
 
     public PointcloudVisualizer pointcloudVisualizer;
 
+    public RawImage previewImage;
+    public ARCoreSessionConfig aRCoreSessionConfig;
+    public Text focusModeText;
+
     string screenShotPath;
     string msgTxt;
 
@@ -32,6 +39,9 @@ public class Test : MonoBehaviour {
 
         portraiFrame.SetActive(false);
         landscapeFrame.SetActive(false);
+
+        previewImage.gameObject.SetActive(false);
+
 
         pointcloudVisualizer.enabled = true;
 
@@ -70,6 +80,9 @@ public class Test : MonoBehaviour {
         image.ReadPixels(new Rect(0, 0, Screen.width, Screen.height), 0, 0);
         image.Apply();
 
+        previewImage.texture = image;
+        previewImage.gameObject.SetActive(true);
+
         byte[] bytes = image.EncodeToPNG();
         var dirPath = Application.persistentDataPath + "/";
         if (!Directory.Exists(dirPath))
@@ -107,6 +120,8 @@ public class Test : MonoBehaviour {
     {
         SaveAndCancelButtons.SetActive(false);
         cameraButton.SetActive(true);
+        previewImage.gameObject.SetActive(false);
+
 
         portraiFrame.SetActive(false);
         landscapeFrame.SetActive(false);
@@ -129,6 +144,8 @@ public class Test : MonoBehaviour {
     {
         ShareAndCancelButtons.SetActive(false);
         cameraButton.SetActive(true);
+        previewImage.gameObject.SetActive(false);
+
 
         portraiFrame.SetActive(false);
         landscapeFrame.SetActive(false);
@@ -147,6 +164,8 @@ public class Test : MonoBehaviour {
 		NativeShare.Share(text, screenShotPath, "", "", "image/png", true, "");
         yield return new WaitForSeconds(0.1f);
         cameraButton.SetActive(true);
+        previewImage.gameObject.SetActive(false);
+
 
         portraiFrame.SetActive(false);
         landscapeFrame.SetActive(false);
@@ -250,6 +269,26 @@ public class Test : MonoBehaviour {
 
 		// Share
         NativeShare.Share(text, screenShotPath, url, subject, "image/png", true, title);
+    }
+
+    public void _ResetButton()
+    {
+        GoogleARCore.Examples.ObjectManipulation.AndyPlacementManipulator.objectCreated = false;
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+    }
+
+    public void _ToggleCameraMode()
+    {
+        if(aRCoreSessionConfig.CameraFocusMode == CameraFocusMode.Auto)
+        {
+            aRCoreSessionConfig.CameraFocusMode = CameraFocusMode.Fixed;
+            focusModeText.text = "Fixed";
+        }
+        else
+        {
+            aRCoreSessionConfig.CameraFocusMode = CameraFocusMode.Auto;
+            focusModeText.text = "Auto Focus";
+        }
     }
 }
 
