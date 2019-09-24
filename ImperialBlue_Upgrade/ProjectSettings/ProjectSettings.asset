@@ -245,7 +245,7 @@ PlayerSettings:
   AndroidTargetArchitectures: 5
   AndroidSplashScreenScale: 0
   androidSplashScreen: {fileID: 0}
-  AndroidKeystoreName: G:/Installs/Git_Tagglabs/DBTest_Tagglabs/ImperialBlue_Upgrade/user.keystore
+  AndroidKeystoreName: D:/manu_github/DBTest_Tagglabs/ImperialBlue_Upgrade/user.keystore
   AndroidKeyaliasName: fbtest
   AndroidBuildApkPerCpuArchitecture: 0
   AndroidTVCompatibility: 1
