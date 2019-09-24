@@ -1,0 +1,204 @@
+fileFormatVersion: 2
+guid: 2a1129e803ef5464296e9229f13ed418
+ModelImporter:
+  serializedVersion: 23
+  fileIDToRecycleName:
+    100000: //RootNode
+    400000: //RootNode
+    2100000: _car objgroup1_Dacia_Duster_OBJ_headlights_cup_mso
+    2100002: _car objpolySurface500SG
+    2100004: 'Material #4'
+    2100006: _car objpolySurface435SG
+    2100008: _car objgroup1_Dacia_Duster_OBJ_Exhauts_mso
+    2100010: _car objDacia_Duster_OBJ_Front_bulbsSG
+    2100012: _car objDacia_Duster_OBJ_Side_skirtsSG
+    2100014: _car objDacia_Duster_OBJ_headlights_glassSG
+    2100016: _car objpolySurface318SG
+    2100018: _car objgroup1_Dacia_Duster_OBJ_Rear_bulbs_mso
+    2100020: _car objpolySurface185SG
+    2100022: _car objDacia_Duster_OBJ_Roof_GridSG
+    2100024: _car objDacia_Duster_OBJ_TaillightsSG
+    2100026: _car objDacia_Duster_OBJ_TaillightsSG1
+    2100028: _car objpolySurface477SG
+    2100030: _car objpolySurface48SG
+    2100032: _car objpolySurface432SG
+    2100034: _car objBoFBXASC195FBXASC174te64SG
+    2300000: //RootNode
+    3300000: //RootNode
+    4300000: View_01
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: 'Material #4'
+    second: {fileID: 2100000, guid: abd0a6552ec9b8047be4a83c28bc9a57, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: _car objBoFBXASC195FBXASC174te64SG
+    second: {fileID: 2100000, guid: f8315f6df3606fe40aaf2322fe76d2d4, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: _car objDacia_Duster_OBJ_Front_bulbsSG
+    second: {fileID: 2100000, guid: 04679285b6d727644b2ffed4ed903025, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: _car objDacia_Duster_OBJ_Roof_GridSG
+    second: {fileID: 2100000, guid: 8bb01c4d68905ef41adc5554f8195aa2, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: _car objDacia_Duster_OBJ_Side_skirtsSG
+    second: {fileID: 2100000, guid: d063e424889c8584f992befe2cd53929, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: _car objDacia_Duster_OBJ_TaillightsSG
+    second: {fileID: 2100000, guid: f25d22b7246b6d94ea5ac6413673ffda, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: _car objDacia_Duster_OBJ_TaillightsSG1
+    second: {fileID: 2100000, guid: 5afc10aa1d0a1c44a9980e290743a91e, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: _car objDacia_Duster_OBJ_headlights_glassSG
+    second: {fileID: 2100000, guid: c26130499511c1e478bdd44ee0ed96af, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: _car objgroup1_Dacia_Duster_OBJ_Exhauts_mso
+    second: {fileID: 2100000, guid: f314d74a14e0aae458c8e9ea56dd35a0, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: _car objgroup1_Dacia_Duster_OBJ_Rear_bulbs_mso
+    second: {fileID: 2100000, guid: f8550498bfcbf4049ba20267cfe349b6, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: _car objgroup1_Dacia_Duster_OBJ_headlights_cup_mso
+    second: {fileID: 2100000, guid: 2e90e5fb32dade54ba23c799c236d78d, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: _car objpolySurface185SG
+    second: {fileID: 2100000, guid: c6431441c06e2c24e8daf3b00af4a9e2, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: _car objpolySurface318SG
+    second: {fileID: 2100000, guid: e7b078d587012694ca8986cc7fbf7204, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: _car objpolySurface432SG
+    second: {fileID: 2100000, guid: a2c52211f91e7ba478a9785381ba3064, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: _car objpolySurface435SG
+    second: {fileID: 2100000, guid: 44938ae8bb420e5488bf62781c77d788, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: _car objpolySurface477SG
+    second: {fileID: 2100000, guid: d492fa3157cd1a94e90dbdf2a65dc6ba, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: _car objpolySurface48SG
+    second: {fileID: 2100000, guid: 9f392031e7cdff341acc479dc13fe040, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: _car objpolySurface500SG
+    second: {fileID: 2100000, guid: fb42dec3f6be5344a9dd0a351b871c77, type: 2}
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+    materialLocation: 0
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    importConstraints: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    useSRGBMaterialColor: 1
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 1
+    importLights: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    preserveHierarchy: 0
+    indexFormat: 0
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+    previousCalculatedGlobalScale: 1
+    hasPreviousCalculatedGlobalScale: 0
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 4
+    legacyComputeAllNormalsFromSmoothingGroupsWhenMeshHasBlendShapes: 0
+    blendShapeNormalImportMode: 1
+    normalSmoothingSource: 0
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 0
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
